@@ -1,4 +1,4 @@
-namespace Scripts.Infrastructure.Input
+namespace Input
 {
     public class StandaloneInputService : InputService
     {

@@ -1,49 +1,55 @@
 ﻿using CamFollow;
-using Scripts.Infrastructure.Input;
+using Input;
+using NPCContainer;
+using PlayerContainer;
 using UnityEngine;
 
-namespace DefaultNamespace
+public class EntryPoint: MonoBehaviour
 {
-    public class EntryPoint: MonoBehaviour
+    [Header("Player's Settings")]
+    [SerializeField] private PlayerConfig _playerConfig;
+    [SerializeField] private Player _playerPrefab;
+    [SerializeField] private Transform _playerPosition;
+    [Header("Npc's Settings")]
+    [SerializeField] private NPC _npcPrefab;
+    [SerializeField] private float _npcRotateSpeed;
+    [SerializeField] private Transform _npcPosition;
+        
+    private Player _player;
+    private IInputService _input;
+    private CameraFollow _camera;
+    private NPC _npc;
+
+    private void Awake()
     {
-        [Header("Player's Settings")]
-        [SerializeField] private PlayerConfig _playerConfig;
-        [SerializeField] private Player _playerPrefab;
-        [SerializeField] private Transform _playerPosition;
+        _input = InputService();
+        CreateAndInitPlayer();
+        InitCamera();
+        _npc = Instantiate(_npcPrefab, _npcPosition.position, Quaternion.identity);
+        _npc.Init(_npcRotateSpeed);
+    }
 
-        private Player _player;
-        private IInputService _input;
-        private CamFollower _camera;
-
-        private void Awake()
+    private IInputService InputService()
+    {
+        if (Application.isEditor)
         {
-            _input = InputService();
-            CreateAndInitPlayer();
-            InitCamera();
+            return new StandaloneInputService();
         }
-
-        private void InitCamera()
+        else
         {
-            _camera = Camera.main.GetComponent<CamFollower>();
-            _camera.Init(_player.transform);
+            return new MobileInputService();
         }
+    }
 
-        private void CreateAndInitPlayer()
-        {
-            _player = Instantiate(_playerPrefab, _playerPosition.position, Quaternion.identity);
-            _player.Init(_input, _playerConfig);
-        }
+    private void CreateAndInitPlayer()
+    {
+        _player =Instantiate(_playerPrefab, _playerPosition.position, Quaternion.identity);
+        _player.Init(_input, _playerConfig);
+    }
 
-        private IInputService InputService()
-        {
-            if (Application.isEditor)
-            {
-                return new StandaloneInputService();
-            }
-            else
-            {
-                return new MobileInputService();
-            }
-        }
+    private void InitCamera()
+    {
+        _camera = Camera.main.GetComponent<CameraFollow>();
+        _camera.Init(_player.transform);
     }
 }

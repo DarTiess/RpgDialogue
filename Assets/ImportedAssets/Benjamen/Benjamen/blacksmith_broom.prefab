@@ -3000,8 +3000,9 @@ GameObject:
   m_Component:
   - component: {fileID: 1257099714495831054}
   - component: {fileID: 1257099714488316432}
+  - component: {fileID: 7115839248719572629}
   m_Layer: 0
-  m_Name: blacksmith2
+  m_Name: blacksmith_broom
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -3041,6 +3042,19 @@ Animator:
   m_HasTransformHierarchy: 1
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorControllerStateOnDisable: 0
+--- !u!65 &7115839248719572629
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1257099714495725806}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 1
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 1, y: 1.9466621, z: 1}
+  m_Center: {x: -0, y: 0.95125765, z: -0}
 --- !u!1 &1257099714495725808
 GameObject:
   m_ObjectHideFlags: 0
