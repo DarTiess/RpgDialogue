@@ -7,6 +7,13 @@
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
     <option name="LAST_RESOLUTION" value="IGNORE" />
   </component>
+  <component name="FileTemplateManagerImpl">
+    <option name="RECENT_TEMPLATES">
+      <list>
+        <option value="XML File" />
+      </list>
+    </option>
+  </component>
   <component name="MarkdownSettingsMigration">
     <option name="stateVersion" value="1" />
   </component>
@@ -78,7 +85,8 @@
       <option name="presentableId" value="Default" />
       <updated>1692168533791</updated>
       <workItem from="1692168537117" duration="2319000" />
-      <workItem from="1692175301096" duration="6073000" />
+      <workItem from="1692175301096" duration="16921000" />
+      <workItem from="1692251287022" duration="10121000" />
     </task>
     <servers />
   </component>

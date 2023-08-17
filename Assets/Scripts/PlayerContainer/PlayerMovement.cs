@@ -30,7 +30,7 @@ namespace PlayerContainer
             _rotationSpeed = rotationSpeed;
             _moveAnimation = moveAnimation;
             _rigidbody = GetComponent<Rigidbody>();
-            _canMove = true;
+            StartMove();
         }
 
         private void MakeRotation(Vector3 target)
@@ -53,6 +53,17 @@ namespace PlayerContainer
             _rigidbody.transform.Translate(_temp * Time.deltaTime * _playerSpeed, Space.World);
             Vector3 tempDirect = transform.position + Vector3.Normalize(_temp);
             MakeRotation(tempDirect);
+        }
+
+        public void StopMove()
+        {
+            _canMove = false;
+            _moveAnimation.MoveAnimation(0);
+        }
+
+        public void StartMove()
+        {
+            _canMove = true;
         }
     }
 }

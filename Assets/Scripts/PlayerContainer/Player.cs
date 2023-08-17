@@ -10,29 +10,40 @@ namespace PlayerContainer
   {
     private PlayerMovement _playerMovement;
     private PlayerAnimator _playerAnimator;
-    private IInputService _input;
+   
+    private bool _onDialog;
+    private IFinishDialogueEvent _dialogueEvent;
 
-    public void Init(IInputService input, PlayerConfig config)
+    public void Init(IInputService input, PlayerConfig config, IFinishDialogueEvent dialogueEvent)
     {
       _playerMovement = GetComponent<PlayerMovement>();
       _playerAnimator = GetComponent<PlayerAnimator>();
       _playerMovement.Init(input, config.Speed, config.RotationSpeed, _playerAnimator);
+      _dialogueEvent = dialogueEvent;
+      _dialogueEvent.FinishDialogue += OnFinishingDialogue;
     }
 
-    private void OnTriggerStay(Collider other)
+    private void OnFinishingDialogue()
+    {
+      _onDialog = false;
+      _playerMovement.StartMove();
+    }
+
+    private void OnTriggerEnter(Collider other)
     {
       if (other.gameObject.TryGetComponent(out NPC npc))
       {
-        npc.StartDialogue(gameObject.transform);
+        if (!_onDialog)
+        {
+          npc.StartDialogue(gameObject.transform);
+          _onDialog = true;
+          _playerMovement.StopMove();
+        }
+       
       }
     }
 
-    private void OnTriggerExit(Collider other)
-    {
-      if (other.gameObject.TryGetComponent(out NPC npc))
-      {
-        npc.EndDialogue();
-      }
-    }
+   
+    
   }
 }

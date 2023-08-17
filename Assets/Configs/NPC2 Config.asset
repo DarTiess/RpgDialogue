@@ -1,0 +1,22 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 008fed7808a14e41a1ec1473451acff7, type: 3}
+  m_Name: NPC2 Config
+  m_EditorClassIdentifier: 
+  _rotationSpeed: 1.5
+  _textAsset: {fileID: 4900000, guid: 6df9ec9adaac41d9938366b8986af1fa, type: 3}
+  _npcPrefab: {fileID: 6341536338378474888, guid: 91772afe4ceb8e34fb53d5050bd5d240, type: 3}
+  _audioClips:
+  - {fileID: 8300000, guid: 9b0a137181755774d91ea1ac5083d156, type: 3}
+  - {fileID: 8300000, guid: 103ef2668d1edc84f987dfa2bbcd9937, type: 3}
+  - {fileID: 8300000, guid: ad16bd0413db7a947a11fad5d87acfbb, type: 3}
+  - {fileID: 8300000, guid: 16964aab4b9b2a64b9c810803d4157d5, type: 3}

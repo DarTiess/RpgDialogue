@@ -1,0 +1,34 @@
+﻿<dialogue>
+    <node>
+        <npctext>Доброго дня, чужестранец!</npctext>
+        <answers>
+            <answer tonode = "1"><text>Приветсвую, чем ты занят?</text></answer>
+            <answer tonode = "2"><text>Есть ли что на продажу?</text></answer>
+            <answer tonode = "0"><text>Я должен идти.</text><end>true</end></answer>
+        </answers>
+    </node>
+    <node>
+        <npctext>Отдыхаю, после долгой медитации.</npctext>
+        <answers>
+            <answer tonode = "2"><text>Есть ли что на продажу?</text></answer>
+            <answer tonode = "0"><text>Всего хорошего.</text><end>true</end></answer>
+            <answer tonode = "3"><text>Может у тебя есть работа для меня?</text></answer>
+        </answers>
+    </node>
+    <node>
+        <npctext>Я не торговец, я монах.</npctext>
+        <answers>
+            <answer tonode = "3"><text>Может тогда у тебя есть работа для меня?</text></answer>
+            <answer tonode = "0"><text>Тогда я пойду.</text><end>true</end></answer>
+            <answer tonode = "0"><text>Хорошо, до стречи.</text><end>true</end></answer>
+        </answers>
+    </node>
+    <node>
+        <npctext>Нет. Спроси у того старика, позади, что вечно убирает дорогу</npctext>
+        <answers>
+            <answer tonode = "2"><text>Есть ли что на продажу?</text></answer>
+            <answer tonode = "0"><text>Хорошо, благодарю.</text><end>true</end></answer>
+            <answer tonode = "0"><text>Я должен идти.</text><end>true</end></answer>
+        </answers>
+    </node>
+</dialogue>

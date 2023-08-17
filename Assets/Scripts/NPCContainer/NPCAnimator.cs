@@ -7,6 +7,7 @@ namespace NPCContainer
     {
         private Animator _animator;
         private static readonly int SAY_HELLO = Animator.StringToHash("SayHello");
+        private static readonly int IDLE = Animator.StringToHash("Idle");
 
         private void Start()
         {
@@ -21,6 +22,12 @@ namespace NPCContainer
         public void EndTalking()
         {
             _animator.SetBool(SAY_HELLO, false);
+            _animator.SetBool(IDLE, false);
+        }
+
+        public void IdleAnimation()
+        {
+            _animator.SetBool(IDLE, true);
         }
     }
 }
