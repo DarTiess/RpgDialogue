@@ -72,6 +72,7 @@ namespace NPCContainer
         private void EndDialogue()
         {
             _npcAnimator.EndTalking();
+            _currentNode = 0;
             StartCoroutine(EnableTriggerArea());
         }
 
