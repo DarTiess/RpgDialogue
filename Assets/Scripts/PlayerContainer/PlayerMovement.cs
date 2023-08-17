@@ -1,3 +1,4 @@
+using DG.Tweening;
 using Input;
 using UnityEngine;
 
@@ -14,15 +15,13 @@ namespace PlayerContainer
         private IInputService _inputService;
         private bool _canMove;
         private Rigidbody _rigidbody;
-
         private void FixedUpdate()
         {
             if (_canMove)
             {
-                Move();
+                Movement();
             }
         }
-
         public void Init(IInputService inputService,float playerSpeed, float rotationSpeed, IMoveAnimation moveAnimation)
         {
             _inputService = inputService;
@@ -30,7 +29,20 @@ namespace PlayerContainer
             _rotationSpeed = rotationSpeed;
             _moveAnimation = moveAnimation;
             _rigidbody = GetComponent<Rigidbody>();
+            
             StartMove();
+        }
+
+        public void StartMove()
+        {
+            _canMove = true;
+        }
+
+        public void StopMove(Transform target)
+        {
+            _canMove = false;
+            _moveAnimation.MoveAnimation(0);
+            RotateToTalk(target);
         }
 
         private void MakeRotation(Vector3 target)
@@ -42,28 +54,24 @@ namespace PlayerContainer
                                                            Quaternion.LookRotation(lookDirection), _rotationSpeed * Time.fixedDeltaTime);
             }
         }
-    
 
-        private void Move()
+        private void Movement()
         {
             _temp.x = _inputService.GetHorizontal;
             _temp.z = _inputService.GetVertical;
 
             _moveAnimation.MoveAnimation(_temp.magnitude);
+            
             _rigidbody.transform.Translate(_temp * Time.deltaTime * _playerSpeed, Space.World);
             Vector3 tempDirect = transform.position + Vector3.Normalize(_temp);
             MakeRotation(tempDirect);
         }
 
-        public void StopMove()
+        private void RotateToTalk(Transform target)
         {
-            _canMove = false;
-            _moveAnimation.MoveAnimation(0);
-        }
+            var look = Quaternion.LookRotation(new Vector3(target.position.x, transform.position.y, target.position.z) - transform.position);
 
-        public void StartMove()
-        {
-            _canMove = true;
+            transform.DORotateQuaternion(look, _rotationSpeed);
         }
     }
 }

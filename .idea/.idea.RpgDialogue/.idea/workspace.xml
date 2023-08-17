@@ -39,6 +39,14 @@
   }
 }</component>
   <component name="RunManager" selected="Attach to Unity Editor.Attach to Unity Editor">
+    <configuration name="Standalone Player" type="RunUnityExe" factoryName="Unity Executable">
+      <option name="EXE_PATH" value="$PROJECT_DIR$/../../../DarBuild/MyPets/RpgDialigue\RpgDialogueDar.exe" />
+      <option name="PROGRAM_PARAMETERS" value="" />
+      <option name="WORKING_DIRECTORY" value="E:\Koding\DarBuild\MyPets\RpgDialigue" />
+      <option name="PASS_PARENT_ENVS" value="1" />
+      <option name="USE_EXTERNAL_CONSOLE" value="0" />
+      <method v="2" />
+    </configuration>
     <configuration name="Start Unity" type="RunUnityExe" factoryName="Unity Executable">
       <option name="EXE_PATH" value="C:\Program Files\Unity\Hub\Editor\2020.3.3f1\Editor\Unity.exe" />
       <option name="PROGRAM_PARAMETERS" value="-projectPath E:\Koding\DarProjUnity\MyPets\RpgDialogue -debugCodeOptimization" />
@@ -86,7 +94,7 @@
       <updated>1692168533791</updated>
       <workItem from="1692168537117" duration="2319000" />
       <workItem from="1692175301096" duration="16921000" />
-      <workItem from="1692251287022" duration="10121000" />
+      <workItem from="1692251287022" duration="14159000" />
     </task>
     <servers />
   </component>

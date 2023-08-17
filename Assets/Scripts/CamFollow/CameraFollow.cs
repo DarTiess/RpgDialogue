@@ -4,9 +4,9 @@ namespace CamFollow
 {
     public class CameraFollow: MonoBehaviour
     {
-        [SerializeField] public float RotationAngleX;
-        [SerializeField] public int Distance;
-        [SerializeField] public float OffsetY;
+        [SerializeField] private float _rotationAngleX=18.83f;
+        [SerializeField] private int _distance=3;
+       [SerializeField] private float _offsetY=1.62f;
         
         private Transform _following;
 
@@ -18,8 +18,8 @@ namespace CamFollow
         {
             if(_following == null)
                 return;
-            Quaternion rotation = Quaternion.Euler(RotationAngleX, 0, 0);
-            Vector3 position = rotation * new Vector3(0, 0, -Distance) + FollowingPointPosition();
+            Quaternion rotation = Quaternion.Euler(_rotationAngleX, 0, 0);
+            Vector3 position = rotation * new Vector3(0, 0, -_distance) + FollowingPointPosition();
             transform.rotation = rotation;
             transform.position = position;
         }
@@ -27,7 +27,7 @@ namespace CamFollow
         private Vector3 FollowingPointPosition()
         {
             Vector3 followingPosition = _following.position;
-            followingPosition.y += OffsetY;
+            followingPosition.y += _offsetY;
             return followingPosition;
         }
     }

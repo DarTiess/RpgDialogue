@@ -1,5 +1,6 @@
 using Input;
 using NPCContainer;
+using UI;
 using UnityEngine;
 
 namespace PlayerContainer
@@ -10,7 +11,6 @@ namespace PlayerContainer
   {
     private PlayerMovement _playerMovement;
     private PlayerAnimator _playerAnimator;
-   
     private bool _onDialog;
     private IFinishDialogueEvent _dialogueEvent;
 
@@ -29,21 +29,18 @@ namespace PlayerContainer
       _playerMovement.StartMove();
     }
 
-    private void OnTriggerEnter(Collider other)
+    private void OnTriggerStay(Collider other)
     {
       if (other.gameObject.TryGetComponent(out NPC npc))
       {
         if (!_onDialog)
         {
-          npc.StartDialogue(gameObject.transform);
           _onDialog = true;
-          _playerMovement.StopMove();
+          npc.StartDialogue(gameObject.transform);
+         
+          _playerMovement.StopMove(npc.transform);
         }
-       
       }
     }
-
-   
-    
   }
 }

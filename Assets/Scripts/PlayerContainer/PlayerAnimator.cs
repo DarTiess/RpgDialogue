@@ -7,8 +7,7 @@ namespace PlayerContainer
     {
         private Animator _animator;
         private static readonly int IS_MOVE = Animator.StringToHash("IsMove");
-   
-    
+
         void Start()
         {
             _animator = GetComponent<Animator>();

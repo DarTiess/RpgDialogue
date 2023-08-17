@@ -1,4 +1,4 @@
-﻿using System.Collections.Generic;
+﻿using UI;
 using UnityEngine;
 
 namespace NPCContainer
@@ -7,7 +7,6 @@ namespace NPCContainer
     {
         private NpcFactory _npcFactory;
         private readonly NPCConfig[] _configs;
-        private List<NPC> _npcList;
         private Transform[] _npsPositions;
         private IDialogueWindow _dialogWindow;
         private IFinishDialogueEvent _dialogEvent;
@@ -16,20 +15,17 @@ namespace NPCContainer
         {
             _configs = configs;
             _npcFactory = new NpcFactory();
-            _npcList = new List<NPC>(configs.Length);
             _npsPositions = positions;
             _dialogWindow = dialogWindow;
             _dialogEvent = dialogEvent;
         }
 
-        public void CreateNPCs()
+        public void SpawnNPC()
         {
             for (int i = 0; i < _configs.Length; i++)
             {
                 NPC npc = _npcFactory.CreateNPC(_configs[i].NPCPrefab, _npsPositions[i]);
                 npc.Init(_configs[i], _dialogWindow, _dialogEvent);
-                _npcList.Add(npc);
-               
             }
         }
 

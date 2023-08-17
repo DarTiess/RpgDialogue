@@ -1,18 +1,21 @@
-﻿using UnityEngine;
+﻿using System.IO;
 using System.Xml.Serialization;
-using System.IO;
- 
-[XmlRoot("dialogue")]
-public class Dialog 
+using UnityEngine;
+
+namespace DialogueSystem
 {
-    [XmlElement("node")]
-    public DialogueNode[] nodes;
- 
-    public static Dialog Load(TextAsset _xml)
+    [XmlRoot("dialogue")]
+    public class Dialog 
     {
-        XmlSerializer serializer = new XmlSerializer (typeof(Dialog));
-        StringReader reader = new StringReader (_xml.text);
-        Dialog dial = serializer.Deserialize (reader) as Dialog;
-        return dial;
+        [XmlElement("node")]
+        public DialogueNode[] Nodes;
+ 
+        public static Dialog Load(TextAsset xml)
+        {
+            XmlSerializer serializer = new XmlSerializer (typeof(Dialog));
+            StringReader reader = new StringReader (xml.text);
+            Dialog dial = serializer.Deserialize (reader) as Dialog;
+            return dial;
+        }
     }
 }

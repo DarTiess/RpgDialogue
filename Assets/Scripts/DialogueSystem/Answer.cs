@@ -1,12 +1,15 @@
 ﻿using System.Xml.Serialization;
 
-[System.Serializable]
-public class Answer
+namespace DialogueSystem
 {
-    [XmlAttribute("tonode")]
-    public int nextNode;
-    [XmlElement("text")]
-    public string text;
-    [XmlElement("end")]
-    public string end;
+    [System.Serializable]
+    public class Answer
+    {
+        [XmlAttribute("tonode")]
+        public int NextNode;
+        [XmlElement("text")]
+        public string Text;
+        [XmlElement("end")]
+        public string End;
+    }
 }

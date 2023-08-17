@@ -1,10 +1,9 @@
-﻿using System;
-using CamFollow;
+﻿using CamFollow;
 using Input;
 using NPCContainer;
 using PlayerContainer;
+using UI;
 using UnityEngine;
-using UnityEngine.Events;
 
 public class EntryPoint: MonoBehaviour
 {
@@ -17,6 +16,7 @@ public class EntryPoint: MonoBehaviour
     [SerializeField] private Transform[] _npcPosition;
     [Header("UI")]
     [SerializeField] private DialogueWindow _dialogueWindowPrefab;
+    [SerializeField] private MainUIWindow _mainUIWindowPrefab;
     
         
     private Player _player;
@@ -24,14 +24,21 @@ public class EntryPoint: MonoBehaviour
     private CameraFollow _camera;
     private NPCSpawner _npcSpawner;
     private DialogueWindow _dialogueWindow;
+    private MainUIWindow _mainUIWindow;
 
     private void Awake()
     {
         _input = InputService();
-        _dialogueWindow = Instantiate(_dialogueWindowPrefab);
+        CreateMainUIWindow();
+        CreateDialogueWindow();
         CreateAndInitPlayer();
         InitCamera();
         CreateNPCSpawner();
+    }
+
+    private void CreateMainUIWindow()
+    {
+        _mainUIWindow = Instantiate(_mainUIWindowPrefab);
     }
 
     private IInputService InputService()
@@ -44,6 +51,11 @@ public class EntryPoint: MonoBehaviour
         {
             return new MobileInputService();
         }
+    }
+
+    private void CreateDialogueWindow()
+    {
+        _dialogueWindow = Instantiate(_dialogueWindowPrefab);
     }
 
     private void CreateAndInitPlayer()
@@ -61,6 +73,6 @@ public class EntryPoint: MonoBehaviour
     private void CreateNPCSpawner()
     {
         _npcSpawner = new NPCSpawner(_npcConfigs, _npcPosition, _dialogueWindow, _dialogueWindow);
-        _npcSpawner.CreateNPCs();
+        _npcSpawner.SpawnNPC();
     }
 }
